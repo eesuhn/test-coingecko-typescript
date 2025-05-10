@@ -22,8 +22,8 @@ async function price() {
   console.log(JSON.stringify(response, null, 2));
 }
 
-async function tokenPrice() {
-  const response = await client.onchain.simple.networks.getTokenPrice(
+async function tokenPriceAddresses() {
+  const response = await client.onchain.simple.networks.getTokenPriceAddresses(
     '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
     {
       network: 'eth',
@@ -33,5 +33,13 @@ async function tokenPrice() {
   console.log(JSON.stringify(response, null, 2));
 }
 
-price();
-tokenPrice();
+async function megafilter() {
+  const response = await client.onchain.pools.getMegafilter({
+    networks: 'base',
+  });
+  console.log(JSON.stringify(response, null, 2));
+}
+
+// price();
+// tokenPriceAddresses();
+megafilter();

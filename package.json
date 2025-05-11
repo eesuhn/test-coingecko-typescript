@@ -1,5 +1,5 @@
 {
-  "name": "test-coingecko-typescript-stainless",
+  "name": "test-coingecko-typescript",
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {

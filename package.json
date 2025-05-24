@@ -16,7 +16,6 @@
     "typescript": "^5.8.3"
   },
   "dependencies": {
-    "coingecko": "github:eesuhn/coingecko-typescript",
     "dotenv": "^16.5.0"
   }
 }

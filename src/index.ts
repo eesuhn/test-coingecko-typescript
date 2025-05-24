@@ -1,9 +1,9 @@
-import Coingecko from 'coingecko';
+import Coingecko from 'coingecko-typescript';
 import 'dotenv/config';
 
 const { PRO_API_KEY, DEMO_API_KEY } = process.env;
 
-if (!PRO_API_KEY || !DEMO_API_KEY) {
+if (!PRO_API_KEY && !DEMO_API_KEY) {
   console.error('Please set your API key in the .env file');
   process.exit(1);
 }
@@ -14,32 +14,13 @@ const client = new Coingecko({
   // environment: 'demo',
 });
 
-async function price() {
-  const response = await client.simple.getPrice({
+async function main() {
+  const response = await client.simple.price.get({
     vs_currencies: 'usd',
     ids: 'bitcoin',
   });
+
   console.log(JSON.stringify(response, null, 2));
 }
 
-async function tokenPriceAddresses() {
-  const response = await client.onchain.simple.networks.getTokenPriceAddresses(
-    '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2',
-    {
-      network: 'eth',
-      include_market_cap: true,
-    }
-  );
-  console.log(JSON.stringify(response, null, 2));
-}
-
-async function megafilter() {
-  const response = await client.onchain.pools.getMegafilter({
-    networks: 'base',
-  });
-  console.log(JSON.stringify(response, null, 2));
-}
-
-// price();
-// tokenPriceAddresses();
-megafilter();
+main();
